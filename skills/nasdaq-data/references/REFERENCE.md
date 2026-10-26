@@ -1572,7 +1572,11 @@ python scripts/fetch_nasdaq.py economic-calendar -q
 
 ## 22. All — Fetch Combinado
 
-El modo `all` ejecuta todos los endpoints disponibles secuencialmente con rate limiting de 0.3s entre requests.
+El modo `all` ejecuta todos los endpoints por ticker secuencialmente con rate limiting de 0.3s entre requests. Si un endpoint falla, se guarda `{"error": ...}` en su clave y se continua con el resto.
+
+Incluye: `info`, `short-interest`, `holdings`, `chart` (ultimo año), `financials`, `institutional-holdings`, `company-profile`, `dividends`, `eps`, `insider-trades` (ultimas 20), `option-chain` y `news` (ultimas 5).
+
+No incluye `etf-holdings` (solo aplica a ETFs), ni los screeners ni los calendarios globales, porque no dependen del ticker.
 
 ### Output
 
@@ -1582,11 +1586,15 @@ El modo `all` ejecuta todos los endpoints disponibles secuencialmente con rate l
   "timestamp": "2026-06-04T07:20:52",
   "info": { ... },
   "short_interest": { ... },
+  "holdings": { ... },
   "chart": { ... },
   "financials": { ... },
   "institutional_holdings": { ... },
   "company_profile": { ... },
   "dividends": { ... },
+  "eps": { ... },
+  "insider_trades": { ... },
+  "option_chain": { ... },
   "news": { ... }
 }
 ```

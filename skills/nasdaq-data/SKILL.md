@@ -98,7 +98,7 @@ python scripts/fetch_nasdaq.py dividend-calendar                   # Dividendos 
 python scripts/fetch_nasdaq.py dividend-calendar --date 2026-06-04 # Dividendos de una fecha
 python scripts/fetch_nasdaq.py splits-calendar                     # Stock splits
 
-# TODO: todos los endpoints en uno
+# Todos los endpoints por ticker en uno (rate limiting 0.3s)
 python scripts/fetch_nasdaq.py all GGAL
 python scripts/fetch_nasdaq.py all NVDA -o nvda_all.json
 
@@ -133,7 +133,7 @@ python scripts/fetch_nasdaq.py all MSFT -o msft.json -q
 | `economic-calendar` | Economic events (actual, consensus, previous) | API REST | `/api/calendar/economicevents` |
 | `dividend-calendar` | Dividendos (ex-date, pay-date, rate) | API REST | `/api/calendar/dividends` |
 | `splits-calendar` | Stock splits | API REST | `/api/calendar/splits` |
-| `all` | Todos los anteriores combinados | - | - |
+| `all` | Todos los endpoints por ticker combinados (sin `etf-holdings`, screeners ni calendarios) | - | - |
 
 ---
 

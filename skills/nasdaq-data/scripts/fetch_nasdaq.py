@@ -401,6 +401,9 @@ def fetch_all(ticker: str) -> dict:
         ("institutional_holdings", fetch_institutional_holdings),
         ("company_profile", fetch_company_profile),
         ("dividends", fetch_dividends),
+        ("eps", fetch_eps),
+        ("insider_trades", lambda t: fetch_insider_trades(t, limit=20)),
+        ("option_chain", fetch_option_chain),
         ("news", lambda t: fetch_news(t, 5)),
     ]
 
